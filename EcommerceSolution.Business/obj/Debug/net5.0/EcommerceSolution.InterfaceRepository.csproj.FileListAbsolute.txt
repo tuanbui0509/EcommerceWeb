@@ -1,0 +1,17 @@
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.deps.json
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\ref\EcommerceSolution.InterfaceRepository.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.Data.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.ViewModel.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.ViewModel.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.AssemblyReference.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.GeneratedMSBuildEditorConfig.editorconfig
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.AssemblyInfoInputs.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.AssemblyInfo.cs
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.CoreCompileInputs.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.CopyComplete
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\ref\EcommerceSolution.InterfaceRepository.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb

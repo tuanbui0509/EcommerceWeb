@@ -1,0 +1,17 @@
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.InterfaceService.deps.json
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.InterfaceService.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\ref\EcommerceSolution.InterfaceService.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.InterfaceService.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.Data.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.ViewModel.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.ViewModel.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\bin\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.csproj.AssemblyReference.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.GeneratedMSBuildEditorConfig.editorconfig
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.AssemblyInfoInputs.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.AssemblyInfo.cs
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.csproj.CoreCompileInputs.cache
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.csproj.CopyComplete
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\ref\EcommerceSolution.InterfaceService.dll
+E:\Entertaiment\Project\Project\EcommerceSolution.InterfaceService\obj\Debug\net5.0\EcommerceSolution.InterfaceService.pdb
