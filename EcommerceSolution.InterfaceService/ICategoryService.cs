@@ -20,8 +20,8 @@ namespace EcommerceSolution.InterfaceService
 
         Task<ApiResult<CategoryViewModel>> GetByIdAsync(Guid id);
         Task<CategoryViewModel> AddAsync(CategoryCreateRequest request);
-        Task UpdateAsync(CategoryUpdateRequest request);
+        Task<ApiResult<string>> UpdateAsync(CategoryUpdateRequest request);
 
-        Task<ApiResult<bool>> DeleteAsync(Guid id);
+        Task<ApiResult<string>> DeleteAsync(Guid id);
     }
 }

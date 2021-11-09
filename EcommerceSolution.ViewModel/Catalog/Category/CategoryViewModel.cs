@@ -10,7 +10,5 @@ namespace EcommerceSolution.ViewModels.Catalog.Categories
         public int Status { set; get; }
 
         public string Name { get; set; }
-        public string Thumb { get; set; }
-        public string Desciption { get; set; }
     }
 }

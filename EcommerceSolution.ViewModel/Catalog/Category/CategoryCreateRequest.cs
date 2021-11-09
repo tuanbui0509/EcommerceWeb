@@ -10,11 +10,7 @@ namespace EcommerceSolution.ViewModel.Catalog.Category
     public class CategoryCreateRequest
     {
         public int Status { set; get; }
-
         public string Name { get; set; }
-        //public string Thumb { get; set; }
-        public string Description { get; set; }
-        public IFormFile ImageFile { get; set; }
 
     }
 }

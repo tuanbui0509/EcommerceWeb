@@ -8,5 +8,6 @@ namespace EcommerceSolution.Data.Model
 {
     public class RoleModel
     {
+        public string Description { get; set; }
     }
 }

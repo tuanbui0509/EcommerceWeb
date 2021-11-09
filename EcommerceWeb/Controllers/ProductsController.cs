@@ -30,17 +30,16 @@ namespace EcommerceSolution.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetAllProductAsync([FromQuery] PagingRequestBase request)
         {
-
             try
             {
                 var products = await _productService.GetAllProductAsync(request);
-                _logger.LogInformation("Created {@product} on {Created}", products, DateTime.Now);
+                _logger.LogInformation("On {@DateTime} GetAllProduct {@products}", DateTime.UtcNow, products);
                 return Ok(products);
             }
             catch (Exception e)
             {
-                _logger.LogError("Can not find product!");
-                return BadRequest("Can not find list Product");
+                _logger.LogError("Error: ", e.Data);
+                return BadRequest("Error: " + e);
             }
         }
 
@@ -56,8 +55,8 @@ namespace EcommerceSolution.BackendApi.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError("Can not find product!");
-                return BadRequest("Can not find Product by id: " + productId);
+                _logger.LogError("Error: ", e);
+                return BadRequest("Can not find Product by id: " + e);
             }
 
         }
@@ -144,8 +143,8 @@ namespace EcommerceSolution.BackendApi.Controllers
             var product = await _productService.GetByIdAsync(productId);
             if (product == null)
                 return BadRequest("Delete Unsuccessful");
-            await _productService.DeleteAsync(productId);
-            return Ok("Delete Successful");
+            var result = await _productService.DeleteAsync(productId);
+            return Ok(result);
         }
 
 
@@ -157,8 +156,8 @@ namespace EcommerceSolution.BackendApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            await _productService.UpdateAsync(request);
-            return Ok();
+            var result = await _productService.UpdateAsync(request);
+            return Ok(result);
         }
         #region Api other
 

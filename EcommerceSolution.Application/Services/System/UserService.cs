@@ -64,7 +64,7 @@ namespace EcommerceSolution.Application.Services.System
                 expires: DateTime.Now.AddHours(3),
                 signingCredentials: creds);
 
-            return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token), roles);
+            return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token), roles, "Login successful");
         }
 
         public async Task<ApiResult<bool>> DeleteAsync(Guid id)

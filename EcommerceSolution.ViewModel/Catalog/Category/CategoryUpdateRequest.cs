@@ -11,8 +11,6 @@ namespace EcommerceSolution.ViewModel.Catalog.Category
     {
         public Guid Id { set; get; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public IFormFile ImageFile { get; set; }
 
     }
 }

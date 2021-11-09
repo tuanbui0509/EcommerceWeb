@@ -6,6 +6,14 @@ namespace EcommerceSolution.ViewModels.Common
 {
     public class ApiSuccessResult<T> : ApiResult<T>
     {
+        public ApiSuccessResult(T resultObj, IList<string> roles, string message)
+        {
+            IsSuccessed = true;
+            ResultObj = resultObj;
+            Roles = roles;
+            Message = message;
+        }
+
         public ApiSuccessResult(T resultObj, IList<string> roles)
         {
             IsSuccessed = true;

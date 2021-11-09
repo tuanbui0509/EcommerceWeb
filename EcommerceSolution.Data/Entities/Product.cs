@@ -9,14 +9,12 @@ namespace EcommerceSolution.Data.Entities
 {
     public class Product : AuditEntity<Guid>
     {
-        //public int Id { set; get; }
         public float Price { set; get; }
         public float OriginalPrice { set; get; }
         public int Stock { set; get; }
         public int ViewCount { set; get; } = 0;
         public int QuantityOrder { set; get; } = 0;
         public bool? IsFeatured { get; set; }
-        public bool? IsActive { get; set; }
         public string Name { set; get; }
         public string Description { set; get; }
         [Timestamp]

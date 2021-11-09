@@ -16,6 +16,7 @@ using EcommerceSolution.ViewModels.Catalog.ProductImage;
 using System.Transactions;
 using EcommerceSolution.Application.Common;
 using EcommerceSolution.Data.Enums;
+using EcommerceSolution.Data.Model;
 using EcommerceSolution.ViewModel.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -26,52 +27,49 @@ namespace EcommerceSolution.Application.Catalog.Categories
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBlobService _blobService;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private const string ContainerName = "images";
-        public CategoryService(IUnitOfWork unitOfWork, IBlobService blobService)
+        public CategoryService(IUnitOfWork unitOfWork, IBlobService blobService,
+            IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _blobService = blobService;
+            _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         public async Task<CategoryViewModel> AddAsync(CategoryCreateRequest request)
         {
+            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByNameAsync(userName);
             using var t = _unitOfWork.CreateTransaction();
             {
-                var cate = new Category()
+                var cate = new CategoryModel()
                 {
-                    Description = request.Description,
                     Name = request.Name,
-                    Status = Status.Active,
                 };
 
-                //Save image
-                if (request.ImageFile != null)
-                {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.ImageFile.FileName.Replace(" ", ""));
-                    await _blobService.UploadFileBlobAsync(fileName, request.ImageFile, ContainerName);
-                    cate.Thumb = fileName;
-                }
 
-                await _unitOfWork.Categories.AddAsync(cate);
+                await _unitOfWork.Categories.AddAsync(cate, user.FirstName + " " + user.LastName);
                 await _unitOfWork.CompleteAsync();
                 t.Commit();
                 return new CategoryViewModel()
                 {
                     Id = cate.Id,
                     Name = cate.Name,
-                    Desciption = cate.Description,
-                    Status = cate.Status == Status.NoActive ? 0 : 1,
-                    Thumb = cate.Thumb
                 };
             }
 
         }
 
-        public async Task<ApiResult<bool>> DeleteAsync(Guid id)
+        public async Task<ApiResult<string>> DeleteAsync(Guid id)
         {
-            await _unitOfWork.Categories.DeleteAsync(id);
+            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByNameAsync(userName);
+            await _unitOfWork.Categories.DeleteAsync(id, user.FirstName + " " + user.LastName);
             await _unitOfWork.CompleteAsync();
-            return new ApiSuccessResult<bool>("Deleted Successful");
+            return new ApiSuccessResult<string>("Updated category successful");
         }
 
         public async Task<PagingResponse<List<CategoryViewModel>>> GetAllAsync(PagingRequestBase request)
@@ -82,9 +80,6 @@ namespace EcommerceSolution.Application.Catalog.Categories
             {
                 Id = x.Id,
                 Name = x.Name,
-                Thumb = x.Thumb,
-                Desciption = x.Description,
-                Status = x.Status == Status.NoActive ? 0 : 1,
 
             }).Skip((request._page - 1) * request._limit).Take(request._limit).ToList();
             return new PagingResponse<List<CategoryViewModel>>()
@@ -97,11 +92,10 @@ namespace EcommerceSolution.Application.Catalog.Categories
 
         public async Task<PagingResponse<List<ProductViewModel>>> GetAllProductByIdAsync(Guid categoryId, PagingRequestBase request)
         {
-            var query = await _unitOfWork.Products.Entities.Where(p => p.CategoryId == categoryId && p.IsActive == true)
+            var query = await _unitOfWork.Products.Entities.Where(p => p.CategoryId == categoryId && p.IsDeleted == true)
                .Select(p => new ProductViewModel()
                {
                    Id = p.Id,
-                   IsActive = p.IsActive,
                    IsFeatured = p.IsFeatured,
                    CategoryName = p.Category.Name,
                    Name = p.Name,
@@ -138,32 +132,25 @@ namespace EcommerceSolution.Application.Catalog.Categories
             {
                 Id = category.Id,
                 Name = category.Name,
-                Thumb = category.Thumb,
-                Desciption = category.Description,
-                Status = category.Status == Status.NoActive ? 0 : 1,
 
             };
             return new ApiSuccessResult<CategoryViewModel>(categoryViewModel);
         }
 
-        public async Task UpdateAsync(CategoryUpdateRequest request)
+        public async Task<ApiResult<string>> UpdateAsync(CategoryUpdateRequest request)
         {
+            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByNameAsync(userName);
             using (var t = _unitOfWork.CreateTransactionScope(IsolationLevel.ReadCommitted))
             {
                 var cate = await _unitOfWork.Categories.GetByIdAsync(request.Id);
                 if (cate == null) throw new Exception($"Cannot find a category with id: {request.Id}");
                 cate.Name = request.Name;
-                cate.Description = request.Description;
-                //Save image
-                if (request.ImageFile != null)
-                {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.ImageFile.FileName.Replace(" ", ""));
-                    await _blobService.UploadFileBlobAsync(fileName, request.ImageFile, ContainerName);
-                    cate.Thumb = fileName;
-                }
-                await _unitOfWork.Categories.UpdateAsync(cate);
+                await _unitOfWork.Categories.UpdateAsync(cate, user.FirstName + " " + user.LastName);
                 await _unitOfWork.CompleteAsync();
                 t.Complete();
+                return new ApiSuccessResult<string>("Updated category successful");
+
             }
         }
     }

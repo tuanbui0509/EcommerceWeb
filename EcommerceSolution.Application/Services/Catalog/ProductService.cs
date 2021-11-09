@@ -60,7 +60,6 @@ namespace EcommerceSolution.Application.Services.Catalog
                     Price = request.Price,
                     Stock = request.Stock,
                     CategoryId = request.CategoryId,
-                    IsActive = request.IsActive,
                     IsFeatured = request.IsFeatured,
                 };
                 await _unitOfWork.Products.AddProductAsync(productModel, user.FirstName + " " + user.LastName);
@@ -100,7 +99,6 @@ namespace EcommerceSolution.Application.Services.Catalog
                     Description = productModel.Description,
                     CategoryId = productModel.CategoryId,
                     IsFeatured = productModel.IsFeatured,
-                    IsActive = productModel.IsActive,
                     ListImage = listProductImage
                 };
             }
@@ -143,7 +141,6 @@ namespace EcommerceSolution.Application.Services.Catalog
                     OriginalPrice = product.OriginalPrice,
                     Price = product.Price,
                     Stock = product.Stock,
-                    IsActive = product.IsActive,
                     IsFeatured = product.IsFeatured,
                     ViewCount = product.ViewCount,
                     CategoryId = product.CategoryId,
@@ -156,7 +153,7 @@ namespace EcommerceSolution.Application.Services.Catalog
         }
 
 
-        public async Task UpdateAsync(ProductUpdateRequest request)
+        public async Task<ApiResult<string>> UpdateAsync(ProductUpdateRequest request)
         {
             using (var t = _unitOfWork.CreateTransactionScope())
             {
@@ -167,11 +164,11 @@ namespace EcommerceSolution.Application.Services.Catalog
                 productModel.Name = request.Name;
                 productModel.Description = request.Description;
                 productModel.IsFeatured = request.IsFeatured;
-                productModel.CategoryId = request.CategoryId;
 
                 await _unitOfWork.Products.UpdateProductAsync(productModel, user.FirstName + " " + user.LastName);
                 await _unitOfWork.CompleteAsync();
                 t.Complete();
+                return new ApiSuccessResult<string>("Update product successful");
             }
         }
 
@@ -211,46 +208,55 @@ namespace EcommerceSolution.Application.Services.Catalog
 
         public async Task<PagingResponse<ICollection<ProductViewModel>>> GetAllProductAsync(PagingRequestBase request)
         {
-            var query = await _unitOfWork.Products.GetAllProductsAsync();
-            var list = query.Select(x => new ProductViewModel()
+            try
             {
-                Id = x.Id,
-                Name = x.Name,
-                CreatedDate = x.CreatedDate,
-                Description = x.Description,
-                OriginalPrice = x.OriginalPrice,
-                Price = x.Price,
-                Stock = x.Stock,
-                ViewCount = x.ViewCount,
-                QuantityOrder = x.QuantityOrder,
-                CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
-                IsFeatured = x.IsFeatured,
-                ListImage = x.ProductImages.Select(i => new ProductImageViewModel()
+                var query = await _unitOfWork.Products.GetAllProductsAsync();
+                var list = query.Select(x => new ProductViewModel()
                 {
-                    Id = i.Id,
-                    ImagePath = i.ImagePath,
-                    SortOrder = i.SortOrder,
-                    ProductId = i.ProductId,
-                }).ToList()
-            }).Skip((request._page - 1) * request._limit).Take(request._limit).ToList().ToList();
-            int TotalItem = query.Count;
-            return new PagingResponse<ICollection<ProductViewModel>>()
+                    Id = x.Id,
+                    Name = x.Name,
+                    CreatedDate = x.CreatedDate,
+                    Description = x.Description,
+                    OriginalPrice = x.OriginalPrice,
+                    Price = x.Price,
+                    Stock = x.Stock,
+                    ViewCount = x.ViewCount,
+                    QuantityOrder = x.QuantityOrder,
+                    CategoryId = x.CategoryId,
+
+                    IsFeatured = x.IsFeatured,
+                    ListImage = x.ProductImages.Select(i => new ProductImageViewModel()
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        SortOrder = i.SortOrder,
+                        ProductId = i.ProductId,
+                    }).ToList()
+                }).Skip((request._page - 1) * request._limit).Take(request._limit).ToList().ToList();
+
+                int TotalItem = query.Count;
+                return new PagingResponse<ICollection<ProductViewModel>>()
+                {
+                    List = list,
+                    TotalItem = TotalItem,
+                    CurrentPage = request._page
+                };
+            }
+            catch (Exception e)
             {
-                List = list,
-                TotalItem = TotalItem,
-                CurrentPage = request._page
-            };
+                throw e;
+            }
         }
 
 
 
-        public async Task DeleteAsync(Guid productId)
+        public async Task<ApiResult<string>> DeleteAsync(Guid productId)
         {
             var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await _userManager.FindByNameAsync(userName);
             await _unitOfWork.Products.DeleteProductAsync(productId, user.FirstName + " " + user.LastName);
             await _unitOfWork.CompleteAsync();
+            return new ApiSuccessResult<string>("Deleted product successful");
         }
 
 
@@ -270,7 +276,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                 ViewCount = x.ViewCount,
                 QuantityOrder = x.QuantityOrder,
                 CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
+
                 IsFeatured = x.IsFeatured,
                 ListImage = x.ProductImages.Select(i => new ProductImageViewModel()
                 {
@@ -305,7 +311,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                 ViewCount = x.ViewCount,
                 QuantityOrder = x.QuantityOrder,
                 CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
+
                 IsFeatured = x.IsFeatured,
                 ListImage = x.ProductImages.Select(i => new ProductImageViewModel()
                 {
@@ -339,7 +345,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                 ViewCount = x.ViewCount,
                 QuantityOrder = x.QuantityOrder,
                 CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
+
                 IsFeatured = x.IsFeatured,
                 ListImage = x.ProductImages.Select(i => new ProductImageViewModel()
                 {

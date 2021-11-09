@@ -38,7 +38,6 @@ namespace EcommerceSolution.Repository.Repository
                 Description = productModel.Description,
                 CategoryId = productModel.CategoryId,
                 IsFeatured = productModel.IsFeatured,
-                IsActive = productModel.IsActive,
                 Price = productModel.Price,
                 CreatedBy = userName,
                 CreatedDate = DateTime.UtcNow,
@@ -64,14 +63,20 @@ namespace EcommerceSolution.Repository.Repository
                     ViewCount = x.ViewCount,
                     QuantityOrder = x.QuantityOrder,
                     CategoryId = x.CategoryId,
-                    IsActive = x.IsActive,
                     IsFeatured = x.IsFeatured,
+                    CategoryName = x.Category.Name,
+                    ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        SortOrder = i.SortOrder
+                    }).ToList()
                 }).ToListAsync();
         }
 
         public async Task<ICollection<ProductModel>> GetBestSellerProducts()
         {
-            return await _context.Products.Where(p => p.IsActive == true)
+            return await _context.Products.Where(p => p.IsDeleted == true)
                 .OrderByDescending(p => p.QuantityOrder).Select(x => new ProductModel
                 {
                     Id = x.Id,
@@ -84,14 +89,21 @@ namespace EcommerceSolution.Repository.Repository
                     ViewCount = x.ViewCount,
                     QuantityOrder = x.QuantityOrder,
                     CategoryId = x.CategoryId,
-                    IsActive = x.IsActive,
                     IsFeatured = x.IsFeatured,
+                    CategoryName = x.Category.Name,
+                    ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        SortOrder = i.SortOrder
+                    }).ToList()
                 }).ToListAsync();
         }
 
         public async Task<ProductModel> GetByIdAsync(Guid productId)
         {
             var product = await _context.Products.FirstOrDefaultAsync(d => d.Id == productId);
+            var productImages = await _context.ProductImages.Where(d => d.ProductId == productId).ToListAsync();
             return new ProductModel()
             {
                 Id = product.Id,
@@ -104,15 +116,19 @@ namespace EcommerceSolution.Repository.Repository
                 ViewCount = product.ViewCount,
                 QuantityOrder = product.QuantityOrder,
                 CategoryId = product.CategoryId,
-                IsActive = product.IsActive,
                 IsFeatured = product.IsFeatured,
-                CategoryName = product.Category.Name
+                ProductImages = productImages.Select(i => new ProductImageModel()
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    SortOrder = i.SortOrder
+                }).ToList()
             };
         }
 
         public async Task<ICollection<ProductModel>> GetFeaturedProducts()
         {
-            return await _context.Products.Where(p => p.IsActive == true && p.IsFeatured == true).OrderByDescending(p => p.ViewCount).Select(x => new ProductModel
+            return await _context.Products.Where(p => p.IsDeleted == true && p.IsFeatured == true).OrderByDescending(p => p.ViewCount).Select(x => new ProductModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -124,14 +140,20 @@ namespace EcommerceSolution.Repository.Repository
                 ViewCount = x.ViewCount,
                 QuantityOrder = x.QuantityOrder,
                 CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
                 IsFeatured = x.IsFeatured,
+                CategoryName = x.Category.Name,
+                ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    SortOrder = i.SortOrder
+                }).ToList()
             }).ToListAsync();
         }
 
         public async Task<ICollection<ProductModel>> GetLatestProducts()
         {
-            return await _context.Products.Where(p => p.IsActive == true).OrderBy(p => p.CreatedDate).Select(x => new ProductModel
+            return await _context.Products.Where(p => p.IsDeleted == true).OrderBy(p => p.CreatedDate).Select(x => new ProductModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -143,8 +165,14 @@ namespace EcommerceSolution.Repository.Repository
                 ViewCount = x.ViewCount,
                 QuantityOrder = x.QuantityOrder,
                 CategoryId = x.CategoryId,
-                IsActive = x.IsActive,
                 IsFeatured = x.IsFeatured,
+                CategoryName = x.Category.Name,
+                ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    SortOrder = i.SortOrder
+                }).ToList()
             }).ToListAsync();
         }
 
@@ -152,6 +180,9 @@ namespace EcommerceSolution.Repository.Repository
         public async Task UpdateProductAsync(ProductModel productModel, string userName)
         {
             var product = await _context.Products.FirstOrDefaultAsync(d => d.Id == productModel.Id);
+            product.Name = productModel.Name ?? product.Name;
+            product.Description = productModel.Description ?? product.Description;
+            product.IsFeatured = productModel.IsFeatured ?? product.IsFeatured;
             product.UpdatedDate = DateTime.UtcNow;
             product.UpdatedBy = userName;
         }

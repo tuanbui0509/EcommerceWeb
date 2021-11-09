@@ -20,7 +20,7 @@ namespace EcommerceWeb
                 .Build();
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console(outputTemplate:
-                    "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+                    "[{Timestamp:HH:mm:ss.SSS} {Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
 

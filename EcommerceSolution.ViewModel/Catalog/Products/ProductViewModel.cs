@@ -19,7 +19,6 @@ namespace EcommerceSolution.ViewModels.Catolog.Products
         public DateTime CreatedDate { set; get; }
         public string Description { set; get; }
         public bool? IsFeatured { get; set; }
-        public bool? IsActive { get; set; }
         public List<ProductImageViewModel> ListImage { get; set; }
         public string CategoryName { get; set; }
         public Guid CategoryId { set; get; }

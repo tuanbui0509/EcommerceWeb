@@ -69,7 +69,7 @@ namespace EcommerceSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "b5e953c9-479b-4061-ba1d-738eb503e07f",
+                            ConcurrencyStamp = "eb2b94d5-c50f-4f2b-bb1a-94048379cf54",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Administrator role",
                             IsDeleted = false,
@@ -79,7 +79,7 @@ namespace EcommerceSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("ce7e4c06-84b0-4114-912f-7e27f245dc47"),
-                            ConcurrencyStamp = "11faf0a1-5c8a-4174-a849-a400dc630698",
+                            ConcurrencyStamp = "964f9f95-f47c-4a05-8f77-d017dc1e977e",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "User role",
                             IsDeleted = false,
@@ -183,7 +183,7 @@ namespace EcommerceSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "abb9dd3b-076c-4d6f-a381-66fdc81a7a59",
+                            ConcurrencyStamp = "502ee21f-c5cb-4df3-acfe-c71f6f63ebed",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(2021, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "tuanbui0509@gmail.com",
@@ -194,7 +194,7 @@ namespace EcommerceSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "tuanbui0509@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEELnVfqQVptWac/Q9MmItuvbSNIiAqrBKxuB1NALvLs8VVHPkC1I4ycGcgpJGODtxA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFuYmpfVdKbdmBvuldydzu4LOuDvMgcrNZJNtLI7D8oqJ29zo0m86PYQJKL9Zp0Fvg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -204,7 +204,7 @@ namespace EcommerceSolution.Data.Migrations
                         {
                             Id = new Guid("aa16f18b-95b9-4e6a-837e-efb5b8e63e84"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bc8313dd-ce56-4924-ab8c-bc51667d9248",
+                            ConcurrencyStamp = "5670ab8c-1459-4299-8608-36eb479f1b59",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@gmail.com",
@@ -215,62 +215,12 @@ namespace EcommerceSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@gmail.com",
                             NormalizedUserName = "user",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMKPnokzUR0heQ7SHYkgn/dRJOGdY9LWwhbaNpXoDlDQm5EKadYnTtmqe+W1zIkxgg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM/5cFaYjmZVr/q9TaLALyruWlwxyZpet1j+R3RpwJgXdh2Kdlfv0lf2tevZdUQ+HA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "user"
                         });
-                });
-
-            modelBuilder.Entity("EcommerceSolution.Data.Entities.Cart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("AppUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("EcommerceSolution.Data.Entities.Category", b =>
@@ -285,11 +235,6 @@ namespace EcommerceSolution.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -300,14 +245,6 @@ namespace EcommerceSolution.Data.Migrations
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
-
-                    b.Property<int>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
-                    b.Property<string>("Thumb")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -441,9 +378,6 @@ namespace EcommerceSolution.Data.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -737,23 +671,6 @@ namespace EcommerceSolution.Data.Migrations
                     b.ToTable("AppUserTokens");
                 });
 
-            modelBuilder.Entity("EcommerceSolution.Data.Entities.Cart", b =>
-                {
-                    b.HasOne("EcommerceSolution.Data.Entities.AppUser", "AppUser")
-                        .WithMany("Carts")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("EcommerceSolution.Data.Entities.Product", "Product")
-                        .WithMany("Carts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("EcommerceSolution.Data.Entities.Order", b =>
                 {
                     b.HasOne("EcommerceSolution.Data.Entities.AppUser", "AppUser")
@@ -846,8 +763,6 @@ namespace EcommerceSolution.Data.Migrations
 
             modelBuilder.Entity("EcommerceSolution.Data.Entities.AppUser", b =>
                 {
-                    b.Navigation("Carts");
-
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
@@ -867,8 +782,6 @@ namespace EcommerceSolution.Data.Migrations
 
             modelBuilder.Entity("EcommerceSolution.Data.Entities.Product", b =>
                 {
-                    b.Navigation("Carts");
-
                     b.Navigation("OrderDetails");
 
                     b.Navigation("ProductImages");
