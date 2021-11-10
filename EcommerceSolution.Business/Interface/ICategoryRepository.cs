@@ -12,12 +12,13 @@ namespace EcommerceSolution.InterfaceRepository.Interface
 {
     public interface ICategoryRepository
     {
-        Task<List<CategoryModel>> GetAllAsync();
+        Task<ICollection<CategoryModel>> GetAllAsync();
 
         Task<CategoryModel> GetByIdAsync(Guid id);
         Task DeleteAsync(Guid id, string userName);
         Task AddAsync(CategoryModel categoryModel, string userName);
 
         Task UpdateAsync(CategoryModel categoryModel, string userName);
+        Task<ICollection<ProductModel>> GetAllProductByIdAsync(Guid id);
     }
 }

@@ -20,23 +20,12 @@ namespace EcommerceWeb
                 .Build();
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console(outputTemplate:
-                    "[{Timestamp:HH:mm:ss.SSS} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+                    "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
 
-            try
-            {
-                Log.Information("Application startup");
-                CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Application failed to start correctly ");
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
+            CreateHostBuilder(args).Build().Run();
+            Log.CloseAndFlush();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

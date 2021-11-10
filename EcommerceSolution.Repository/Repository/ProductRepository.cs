@@ -51,6 +51,7 @@ namespace EcommerceSolution.Repository.Repository
         {
 
             return await _context.Products
+                .Where(x => x.IsDeleted == false)
                 .Select(x => new ProductModel
                 {
                     Id = x.Id,
@@ -76,7 +77,7 @@ namespace EcommerceSolution.Repository.Repository
 
         public async Task<ICollection<ProductModel>> GetBestSellerProducts()
         {
-            return await _context.Products.Where(p => p.IsDeleted == true)
+            return await _context.Products.Where(p => p.IsDeleted == false)
                 .OrderByDescending(p => p.QuantityOrder).Select(x => new ProductModel
                 {
                     Id = x.Id,
@@ -128,7 +129,7 @@ namespace EcommerceSolution.Repository.Repository
 
         public async Task<ICollection<ProductModel>> GetFeaturedProducts()
         {
-            return await _context.Products.Where(p => p.IsDeleted == true && p.IsFeatured == true).OrderByDescending(p => p.ViewCount).Select(x => new ProductModel
+            return await _context.Products.Where(p => p.IsDeleted == false && p.IsFeatured == true).OrderByDescending(p => p.ViewCount).Select(x => new ProductModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -153,7 +154,7 @@ namespace EcommerceSolution.Repository.Repository
 
         public async Task<ICollection<ProductModel>> GetLatestProducts()
         {
-            return await _context.Products.Where(p => p.IsDeleted == true).OrderBy(p => p.CreatedDate).Select(x => new ProductModel
+            return await _context.Products.Where(p => p.IsDeleted == false).OrderBy(p => p.CreatedDate).Select(x => new ProductModel
             {
                 Id = x.Id,
                 Name = x.Name,

@@ -33,7 +33,7 @@ namespace EcommerceSolution.BackendApi.Controllers
             try
             {
                 var products = await _productService.GetAllProductAsync(request);
-                _logger.LogInformation("On {@DateTime} GetAllProduct {@products}", DateTime.UtcNow, products);
+                _logger.LogInformation("[{@DateTime}] GetAllProduct {@products}", DateTime.UtcNow, products);
                 return Ok(products);
             }
             catch (Exception e)
@@ -50,7 +50,8 @@ namespace EcommerceSolution.BackendApi.Controllers
             try
             {
                 var product = await _productService.GetByIdAsync(productId);
-                _logger.LogInformation("Created {@product} on {Created}", product, DateTime.Now);
+                _logger.LogInformation("[{@DateTime}] GetByIdAsync {@product}", DateTime.UtcNow, product);
+
                 return Ok(product);
             }
             catch (Exception e)
@@ -77,20 +78,11 @@ namespace EcommerceSolution.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> GetFeaturedProductsAsync([FromQuery] PagingRequestBase request)
         {
-            var cacheKey = "FeaturedProducts";
-            var value = _memoryCache.GetValue(cacheKey);
-            if (value != null)
-            {
-                _logger.LogInformation("Fetch " + cacheKey + " into cache memory");
-                return Ok(value);
-            }
-            else
-            {
-                var products = await _productService.GetFeaturedProductsAsync(request);
-                _memoryCache.Add(cacheKey, products, DateTimeOffset.UtcNow.AddHours(1));
-                _logger.LogInformation("Added " + cacheKey + " into cache memory");
-                return Ok(products);
-            }
+
+            var products = await _productService.GetFeaturedProductsAsync(request);
+            _logger.LogInformation("[{@DateTime}] GetFeaturedProductsAsync {@products}", DateTime.UtcNow, products);
+
+            return Ok(products);
 
         }
 
@@ -98,21 +90,9 @@ namespace EcommerceSolution.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> GetLatestProductsAsync([FromQuery] PagingRequestBase request)
         {
-            var cacheKey = "LatestProducts";
-            var value = _memoryCache.GetValue(cacheKey);
-            if (value != null)
-            {
-                _logger.LogInformation("Fetch " + cacheKey + " into cache memory");
-                return Ok(value);
-            }
-            else
-            {
-                var products = await _productService.GetLatestProductsAsync(request);
-
-                _memoryCache.Add(cacheKey, products, DateTimeOffset.UtcNow.AddHours(1));
-                _logger.LogInformation("Added " + cacheKey + " into cache memory");
-                return Ok(products);
-            }
+            var products = await _productService.GetLatestProductsAsync(request);
+            _logger.LogInformation("[{@DateTime}] GetLatestProductsAsync {@products}", DateTime.UtcNow, products);
+            return Ok(products);
         }
 
         [HttpGet("best-seller")]
@@ -120,20 +100,9 @@ namespace EcommerceSolution.BackendApi.Controllers
         public async Task<ActionResult> GetBestSellerProductsAsync([FromQuery] PagingRequestBase request)
         {
 
-            var cacheKey = "BestSaleProducts";
-            var value = _memoryCache.GetValue(cacheKey);
-            if (value != null)
-            {
-                _logger.LogInformation("Fetch " + cacheKey + " into cache memory");
-                return Ok(value);
-            }
-            else
-            {
-                var products = await _productService.GetBestSellerProductsAsync(request);
-                _memoryCache.Add(cacheKey, products, DateTimeOffset.UtcNow.AddHours(1));
-                _logger.LogInformation("Added " + cacheKey + " into cache memory");
-                return Ok(products);
-            }
+            var products = await _productService.GetBestSellerProductsAsync(request);
+            _logger.LogInformation("[{@DateTime}] GetBestSellerProductsAsync {@products}", DateTime.UtcNow, products);
+            return Ok(products);
         }
 
         [HttpDelete]

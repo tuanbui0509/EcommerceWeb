@@ -80,7 +80,28 @@ namespace EcommerceSolution.Application.Catalog.Categories
             {
                 Id = x.Id,
                 Name = x.Name,
-
+                Products = x.Products.Select(p => new ProductViewModel()
+                {
+                    Id = p.Id,
+                    IsFeatured = p.IsFeatured,
+                    CategoryName = p.CategoryName,
+                    Name = p.Name,
+                    CreatedDate = p.CreatedDate,
+                    Description = p.Description,
+                    OriginalPrice = p.OriginalPrice,
+                    Price = p.Price,
+                    Stock = p.Stock,
+                    ViewCount = p.ViewCount,
+                    QuantityOrder = p.QuantityOrder,
+                    CategoryId = p.CategoryId,
+                    ListImage = p.ProductImages.Select(i => new ProductImageViewModel()
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        SortOrder = i.SortOrder,
+                        ProductId = i.ProductId,
+                    }).ToList()
+                }).ToList()
             }).Skip((request._page - 1) * request._limit).Take(request._limit).ToList();
             return new PagingResponse<List<CategoryViewModel>>()
             {
@@ -92,31 +113,31 @@ namespace EcommerceSolution.Application.Catalog.Categories
 
         public async Task<PagingResponse<List<ProductViewModel>>> GetAllProductByIdAsync(Guid categoryId, PagingRequestBase request)
         {
-            var query = await _unitOfWork.Products.Entities.Where(p => p.CategoryId == categoryId && p.IsDeleted == true)
-               .Select(p => new ProductViewModel()
-               {
-                   Id = p.Id,
-                   IsFeatured = p.IsFeatured,
-                   CategoryName = p.Category.Name,
-                   Name = p.Name,
-                   CreatedDate = p.CreatedDate,
-                   Description = p.Description,
-                   OriginalPrice = p.OriginalPrice,
-                   Price = p.Price,
-                   Stock = p.Stock,
-                   ViewCount = p.ViewCount,
-                   QuantityOrder = p.QuantityOrder,
-                   CategoryId = p.CategoryId,
-                   ListImage = p.ProductImages.Select(i => new ProductImageViewModel()
-                   {
-                       Id = i.Id,
-                       ImagePath = i.ImagePath,
-                       SortOrder = i.SortOrder,
-                       ProductId = i.ProductId,
-                   }).ToList()
-               }).ToListAsync();
-            int TotalItem = query.Count;
-            var list = query.Skip((request._page - 1) * request._limit).Take(request._limit).ToList();
+            var query = await _unitOfWork.Categories.GetAllProductByIdAsync(categoryId);
+            var products = query.Select(p => new ProductViewModel()
+            {
+                Id = p.Id,
+                IsFeatured = p.IsFeatured,
+                CategoryName = p.CategoryName,
+                Name = p.Name,
+                CreatedDate = p.CreatedDate,
+                Description = p.Description,
+                OriginalPrice = p.OriginalPrice,
+                Price = p.Price,
+                Stock = p.Stock,
+                ViewCount = p.ViewCount,
+                QuantityOrder = p.QuantityOrder,
+                CategoryId = p.CategoryId,
+                ListImage = p.ProductImages.Select(i => new ProductImageViewModel()
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    SortOrder = i.SortOrder,
+                    ProductId = i.ProductId,
+                }).ToList()
+            }).ToList();
+            int TotalItem = products.Count;
+            var list = products.Skip((request._page - 1) * request._limit).Take(request._limit).ToList();
             return new PagingResponse<List<ProductViewModel>>()
             {
                 List = list,

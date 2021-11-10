@@ -51,12 +51,33 @@ namespace EcommerceSolution.Repository.Repository
             category.IsDeleted = true;
         }
 
-        public async Task<List<CategoryModel>> GetAllAsync()
+        public async Task<ICollection<CategoryModel>> GetAllAsync()
         {
             return await _context.Categories.Select(c => new CategoryModel()
             {
                 Id = c.Id,
                 Name = c.Name,
+                Products = c.Products.Select(x => new ProductModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    CreatedDate = x.CreatedDate,
+                    Description = x.Description,
+                    OriginalPrice = x.OriginalPrice,
+                    Price = x.Price,
+                    Stock = x.Stock,
+                    ViewCount = x.ViewCount,
+                    QuantityOrder = x.QuantityOrder,
+                    CategoryId = x.CategoryId,
+                    IsFeatured = x.IsFeatured,
+                    CategoryName = x.Category.Name,
+                    ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        SortOrder = i.SortOrder
+                    }).ToList()
+                }).ToList()
             }).ToListAsync();
         }
 
@@ -78,6 +99,56 @@ namespace EcommerceSolution.Repository.Repository
             category.UpdatedBy = userName;
             category.Name = categoryModel.Name ?? category.Name;
             _context.Update(category);
+        }
+
+        public async Task<ICollection<ProductModel>> GetAllProductByIdAsync(Guid id)
+        {
+            //var c = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            //return await _context.Products.Where(p => p.CategoryId == id).Select(x => new ProductModel()
+            //{
+            //    Id = x.Id,
+            //    Name = x.Name,
+            //    CreatedDate = x.CreatedDate,
+            //    Description = x.Description,
+            //    OriginalPrice = x.OriginalPrice,
+            //    Price = x.Price,
+            //    Stock = x.Stock,
+            //    ViewCount = x.ViewCount,
+            //    QuantityOrder = x.QuantityOrder,
+            //    CategoryId = x.CategoryId,
+            //    IsFeatured = x.IsFeatured,
+            //    CategoryName = x.Category.Name,
+            //    ProductImages = x.ProductImages.Select(i => new ProductImageModel()
+            //    {
+            //        Id = i.Id,
+            //        ImagePath = i.ImagePath,
+            //        SortOrder = i.SortOrder
+            //    }).ToList()
+            //})
+            //    .ToListAsync();
+            var products = await _context.Products.FromSqlRaw("exec [SP_GetAllProductsByCategoryId] @p0", id).ToListAsync();
+            return products.Select(x => new ProductModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                OriginalPrice = x.OriginalPrice,
+                Price = x.Price,
+                Stock = x.Stock,
+                ViewCount = x.ViewCount,
+                QuantityOrder = x.QuantityOrder,
+                CategoryId = x.CategoryId,
+                IsFeatured = x.IsFeatured,
+                //CategoryName = x.Category.Name,
+                ProductImages = _context.ProductImages.Where(i => i.ProductId == x.Id).Select(i => new ProductImageModel()
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    SortOrder = i.SortOrder
+                }).ToList()
+            })
+                .ToList();
+
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceSolution.Data.Entities
 {
-    public class WishList : AuditEntity<Guid>
+    public class WishList : IAuditEntity
     {
         //public int Id { set; get; }
 
@@ -18,5 +18,10 @@ namespace EcommerceSolution.Data.Entities
         public AppUser AppUser { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public string UpdatedBy { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

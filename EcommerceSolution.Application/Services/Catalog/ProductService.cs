@@ -364,5 +364,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                 CurrentPage = request._page
             };
         }
+
+
     }
 }
