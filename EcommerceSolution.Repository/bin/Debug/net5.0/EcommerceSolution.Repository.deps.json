@@ -10,6 +10,7 @@
         "dependencies": {
           "EcommerceSolution.Data": "1.0.0",
           "EcommerceSolution.InterfaceRepository": "1.0.0",
+          "FluentValidation.AspNetCore": "10.3.3",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
@@ -27,6 +28,30 @@
       "FluentValidation/10.3.3": {
         "runtime": {
           "lib/net5.0/FluentValidation.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "10.3.3.0"
+          }
+        }
+      },
+      "FluentValidation.AspNetCore/10.3.3": {
+        "dependencies": {
+          "FluentValidation": "10.3.3",
+          "FluentValidation.DependencyInjectionExtensions": "10.3.3"
+        },
+        "runtime": {
+          "lib/net5.0/FluentValidation.AspNetCore.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "10.3.3.0"
+          }
+        }
+      },
+      "FluentValidation.DependencyInjectionExtensions/10.3.3": {
+        "dependencies": {
+          "FluentValidation": "10.3.3",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "10.3.3.0"
           }
@@ -1769,6 +1794,7 @@
       },
       "EcommerceSolution.Data/1.0.0": {
         "dependencies": {
+          "FluentValidation.AspNetCore": "10.3.3",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.10",
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10",
@@ -1795,6 +1821,7 @@
       "EcommerceSolution.InterfaceRepository/1.0.0": {
         "dependencies": {
           "EcommerceSolution.ViewModel": "1.0.0",
+          "FluentValidation.AspNetCore": "10.3.3",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Enrichers.Context": "4.2.0",
@@ -1812,6 +1839,7 @@
         "dependencies": {
           "EcommerceSolution.Data": "1.0.0",
           "FluentValidation": "10.3.3",
+          "FluentValidation.AspNetCore": "10.3.3",
           "Microsoft.AspNetCore.Http.Features": "5.0.10",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
@@ -1840,6 +1868,20 @@
       "sha512": "sha512-sgRC+7q4mnmDHE9ehk2cvb+FDTy/gtw5iBoKFY3FVp1ZwFsLS0kIcdSpNlCO3XyyNIzZI2ca8I/YiFG9pM6x0Q==",
       "path": "fluentvalidation/10.3.3",
       "hashPath": "fluentvalidation.10.3.3.nupkg.sha512"
+    },
+    "FluentValidation.AspNetCore/10.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DEh0ibCjH2kL5sk9yHcYMFrARUZ+/7iisW900odFUh3FV2zS5A/7hjNjnHSv2Imgq4gIQmpajamMm1uFDrBBWA==",
+      "path": "fluentvalidation.aspnetcore/10.3.3",
+      "hashPath": "fluentvalidation.aspnetcore.10.3.3.nupkg.sha512"
+    },
+    "FluentValidation.DependencyInjectionExtensions/10.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kol9KlAn2pijRa0vLCzAPcp8Ql8yZdIRrO80eMVLswXQ0v6ai+ihOdqF/qPJCMXNWBnTcTGYjp1tZtizPWO+Cg==",
+      "path": "fluentvalidation.dependencyinjectionextensions/10.3.3",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.10.3.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
       "type": "package",

@@ -42,6 +42,11 @@ E:\Entertaiment\Project\Project\EcommerceSolution.Application\bin\Debug\net5.0\E
 E:\Entertaiment\Project\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.InterfaceService.pdb
 E:\Entertaiment\Project\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
 E:\Entertaiment\Project\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.csproj.AssemblyReference.cache
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.AssemblyInfoInputs.cache
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.AssemblyInfo.cs
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.csproj.CoreCompileInputs.cache
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.Application.deps.json
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.Application.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\ref\EcommerceSolution.Application.dll
@@ -58,11 +63,6 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.Utilities.pdb
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.ViewModel.pdb
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.csproj.AssemblyReference.cache
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.GeneratedMSBuildEditorConfig.editorconfig
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.AssemblyInfoInputs.cache
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.AssemblyInfo.cs
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.csproj.CoreCompileInputs.cache
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.csproj.CopyComplete
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\EcommerceSolution.Application.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Application\obj\Debug\net5.0\ref\EcommerceSolution.Application.dll

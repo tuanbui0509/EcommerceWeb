@@ -34,10 +34,8 @@ namespace EcommerceSolution.Application.Services.Catalog
             _userManager = userManager;
         }
 
-        public async Task<ProductImageViewModel> AddImageAsync(ProductImageCreateRequest request)
+        public async Task<ProductImageViewModel> AddImageAsync(ProductImageCreateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             using (var t = _unitOfWork.CreateTransaction())
             {
                 var productImage = new ProductImageModel()
@@ -52,7 +50,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                     await _blobService.UploadFileBlobAsync(fileName, request.ImageFile, ContainerName);
                     productImage.ImagePath = fileName;
                 }
-                await _unitOfWork.ProductImages.AddAsync(productImage, user.FirstName + " " + user.LastName);
+                await _unitOfWork.ProductImages.AddAsync(productImage, userName);
                 await _unitOfWork.CompleteAsync();
                 t.Commit();
                 return new ProductImageViewModel()
@@ -64,13 +62,11 @@ namespace EcommerceSolution.Application.Services.Catalog
                 };
             }
         }
-        public async Task DeleteImageAsync(Guid imageId)
+        public async Task DeleteImageAsync(Guid imageId, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             var image = await _unitOfWork.ProductImages.GetByIdAsync(imageId);
             await _blobService.DeleteBlobAsync(image.ImagePath, "images");
-            await _unitOfWork.ProductImages.DeleteAsync(imageId, user.FirstName + " " + user.LastName);
+            await _unitOfWork.ProductImages.DeleteAsync(imageId, userName);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -98,10 +94,8 @@ namespace EcommerceSolution.Application.Services.Catalog
             }).ToList();
         }
 
-        public async Task UpdateImageAsync(ProductImageUpdateRequest request)
+        public async Task UpdateImageAsync(ProductImageUpdateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             using (var t = _unitOfWork.CreateTransaction())
             {
                 var productImage = await _unitOfWork.ProductImages.GetByIdAsync(request.Id);
@@ -115,7 +109,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                 }
 
                 productImage.SortOrder = request.SortOrder;
-                await _unitOfWork.ProductImages.UpdateAsync(productImage, user.FirstName + " " + user.LastName);
+                await _unitOfWork.ProductImages.UpdateAsync(productImage, userName);
                 await _unitOfWork.CompleteAsync();
                 t.Commit();
             }

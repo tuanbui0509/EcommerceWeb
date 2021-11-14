@@ -14,8 +14,7 @@ namespace EcommerceSolution.Data.Configurations
         public void Configure(EntityTypeBuilder<Review> builder)
         {
             builder.ToTable("Reviews");
-
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => new { x.UserId, x.ProductId });
             builder.Property(x => x.RowVersion)
                 .HasColumnType("timestamp")
                 .IsConcurrencyToken()

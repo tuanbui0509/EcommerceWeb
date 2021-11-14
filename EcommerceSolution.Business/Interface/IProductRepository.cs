@@ -13,7 +13,9 @@ namespace EcommerceSolution.InterfaceRepository.Interface
     {
         IQueryable<Product> Entities { get; }
         Task AddProductAsync(ProductModel product, string userName);
+
         Task UpdateProductAsync(ProductModel product, string userName);
+
         Task<ProductModel> GetByIdAsync(Guid productId);
         Task DeleteProductAsync(Guid productId, string userName);
         Task<ICollection<ProductModel>> GetAllProductsAsync();

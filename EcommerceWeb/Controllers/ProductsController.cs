@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EcommerceSolution.ViewModels.Catolog.Products;
 using EcommerceSolution.InterfaceService;
 using EcommerceSolution.Utilities.Cache;
 using EcommerceSolution.ViewModels.Common;
+using EcommerceWeb.Controllers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace EcommerceSolution.BackendApi.Controllers
@@ -13,18 +16,17 @@ namespace EcommerceSolution.BackendApi.Controllers
     [Route("api/[Controller]")]
     [ApiController]
     [Authorize]
-    public class ProductsController : ControllerBase
+    public class ProductsController : SuperController
     {
         private readonly IProductService _productService;
-        private readonly IMemoryCacheHelper _memoryCache;
         private readonly ILogger<ProductsController> _logger;
-
-        public ProductsController(IProductService productService, IMemoryCacheHelper memoryCache, ILogger<ProductsController> logger)
+        public ProductsController(IProductService productService, ILogger<ProductsController> logger,
+            IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _productService = productService;
-            _memoryCache = memoryCache;
             _logger = logger;
         }
+
 
         [HttpGet]
         [AllowAnonymous]
@@ -65,7 +67,7 @@ namespace EcommerceSolution.BackendApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateProductAsync([FromForm] ProductCreateRequest request)
         {
-            var result = await _productService.CreateAsync(request);
+            var result = await _productService.CreateAsync(request, CurrentUsername);
             if (result == null)
             {
                 return BadRequest("Can not find product!");
@@ -81,7 +83,6 @@ namespace EcommerceSolution.BackendApi.Controllers
 
             var products = await _productService.GetFeaturedProductsAsync(request);
             _logger.LogInformation("[{@DateTime}] GetFeaturedProductsAsync {@products}", DateTime.UtcNow, products);
-
             return Ok(products);
 
         }
@@ -99,7 +100,6 @@ namespace EcommerceSolution.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> GetBestSellerProductsAsync([FromQuery] PagingRequestBase request)
         {
-
             var products = await _productService.GetBestSellerProductsAsync(request);
             _logger.LogInformation("[{@DateTime}] GetBestSellerProductsAsync {@products}", DateTime.UtcNow, products);
             return Ok(products);
@@ -112,7 +112,7 @@ namespace EcommerceSolution.BackendApi.Controllers
             var product = await _productService.GetByIdAsync(productId);
             if (product == null)
                 return BadRequest("Delete Unsuccessful");
-            var result = await _productService.DeleteAsync(productId);
+            var result = await _productService.DeleteAsync(productId, CurrentUsername);
             return Ok(result);
         }
 
@@ -125,7 +125,7 @@ namespace EcommerceSolution.BackendApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _productService.UpdateAsync(request);
+            var result = await _productService.UpdateAsync(request, CurrentUsername);
             return Ok(result);
         }
         #region Api other

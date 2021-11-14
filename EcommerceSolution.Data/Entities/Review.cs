@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceSolution.Data.Entities
 {
-    public class Review : AuditEntity<Guid>
+    public class Review : IAuditEntity
     {
         //public int Id { set; get; }
         public DateTime ReviewDate { set; get; }
@@ -20,5 +20,10 @@ namespace EcommerceSolution.Data.Entities
         public byte[] RowVersion { get; set; }
         public Product Product { set; get; }
         public AppUser AppUser { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public string UpdatedBy { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

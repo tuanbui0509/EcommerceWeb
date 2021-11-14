@@ -28,7 +28,6 @@ namespace EcommerceSolution.Data.EF
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ReviewConfiguration());
-            modelBuilder.ApplyConfiguration(new WishListConfiguration());
 
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
@@ -49,7 +48,6 @@ namespace EcommerceSolution.Data.EF
         public DbSet<Category> Categories { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<WishList> WishList { get; set; }
 
         public DbSet<OrderDetail> OrderDetails { get; set; }
 

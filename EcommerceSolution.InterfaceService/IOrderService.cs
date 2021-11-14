@@ -10,14 +10,10 @@ namespace EcommerceSolution.InterfaceService
 {
     public interface IOrderService
     {
-        Task<Guid> Create(CheckoutRequest request);
-
-        Task ChangeStatusSuccess(Guid orderId);
-        Task ChangeStatusCancel(Guid orderId);
-
+        Task<Guid> Create(CheckoutRequest request, string userName);
+        Task ChangeStatusSuccess(Guid orderId, string userName);
+        Task ChangeStatusCancel(Guid orderId, string userName);
         Task<OrderViewModel> GetById(Guid orderId);
-
         Task<ICollection<OrderViewModel>> GetAllOrderByUser(Guid id);
-        Task<ICollection<OrderViewModel>> GetAllOrder();
     }
 }

@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EcommerceSolution.Application.Catolog.Orders;
 using EcommerceSolution.ViewModels.Carts;
 using EcommerceSolution.InterfaceService;
+using EcommerceWeb.Controllers;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,11 +18,11 @@ namespace EcommerceSolution.BackendApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class OrdersController : ControllerBase
+    public class OrdersController : SuperController
     {
         private readonly IOrderService _orderService;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IOrderService orderService, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _orderService = orderService;
         }
@@ -51,13 +54,13 @@ namespace EcommerceSolution.BackendApi.Controllers
         [HttpPatch("ChangeStatusSuccess")]
         public async Task<ActionResult> ChangeStatusSuccess(Guid orderId)
         {
-            await _orderService.ChangeStatusSuccess(orderId);
+            await _orderService.ChangeStatusSuccess(orderId, CurrentUsername);
             return Ok();
         }
         [HttpPatch("ChangeStatusCancel")]
         public async Task<ActionResult> ChangeStatusCancel(Guid orderId)
         {
-            await _orderService.ChangeStatusCancel(orderId);
+            await _orderService.ChangeStatusCancel(orderId, CurrentUsername);
             return Ok();
         }
 
@@ -65,7 +68,7 @@ namespace EcommerceSolution.BackendApi.Controllers
         [ActionName(nameof(CreateOrder))]
         public async Task<ActionResult> CreateOrder([FromBody] CheckoutRequest request)
         {
-            var OrderId = await _orderService.Create(request);
+            var OrderId = await _orderService.Create(request, CurrentUsername);
             if (OrderId.ToString() == "0000-0000-000-000")
                 return BadRequest();
             var order = await _orderService.GetById(OrderId);

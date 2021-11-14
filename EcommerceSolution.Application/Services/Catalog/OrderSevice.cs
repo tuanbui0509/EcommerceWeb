@@ -19,21 +19,16 @@ namespace EcommerceSolution.Application.Catolog.Orders
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public OrderSevice(UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork)
+        public OrderSevice(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Guid> Create(CheckoutRequest request)
+        public async Task<Guid> Create(CheckoutRequest request, string userName)
         {
             using (var t = _unitOfWork.CreateTransactionScope((IsolationLevel.ReadCommitted)))
             {
-                var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var user = await _userManager.FindByNameAsync(userName);
+
                 var order = new OrderModel()
                 {
                     ShipAddress = request.Address,
@@ -51,7 +46,7 @@ namespace EcommerceSolution.Application.Catolog.Orders
                     }).ToList()
                 };
 
-                await _unitOfWork.Orders.CreateAsync(order, user.FirstName + " " + user.LastName);
+                await _unitOfWork.Orders.CreateAsync(order, userName);
                 var orderDetails = new List<OrderDetailModel>();
                 foreach (var item in request.OrderDetails)
                 {
@@ -62,8 +57,8 @@ namespace EcommerceSolution.Application.Catolog.Orders
                         ProductId = item.ProductId,
                         Price = item.Price,
                     };
-                    await _unitOfWork.OrderDetails.CreateAsync(orderDetail, user.FirstName + " " + user.LastName);
-                    await _unitOfWork.Products.UpdateOrderQuantity(orderDetail.ProductId, orderDetail.Quantity, user.FirstName + " " + user.LastName);
+                    await _unitOfWork.OrderDetails.CreateAsync(orderDetail, userName);
+                    await _unitOfWork.Products.UpdateOrderQuantity(orderDetail.ProductId, orderDetail.Quantity, userName);
                     orderDetails.Add(orderDetail);
                 }
                 order.OrderDetails = orderDetails;
@@ -73,23 +68,19 @@ namespace EcommerceSolution.Application.Catolog.Orders
             }
         }
 
-        public async Task ChangeStatusSuccess(Guid orderId)
+        public async Task ChangeStatusSuccess(Guid orderId, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
             if (order == null) throw new Exception($"Cannot find a Order with id: {orderId}");
-            await _unitOfWork.Orders.ChangeStatusSuccessAsync(orderId, user.FirstName + " " + user.LastName);
+            await _unitOfWork.Orders.ChangeStatusSuccessAsync(orderId, userName);
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task ChangeStatusCancel(Guid orderId)
+        public async Task ChangeStatusCancel(Guid orderId, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
             if (order == null) throw new Exception($"Cannot find a Order with id: {orderId}");
-            await _unitOfWork.Orders.ChangeStatusSuccessAsync(orderId, user.FirstName + " " + user.LastName);
+            await _unitOfWork.Orders.ChangeStatusSuccessAsync(orderId, userName);
             await _unitOfWork.CompleteAsync();
         }
 

@@ -17,6 +17,7 @@ using System.Transactions;
 using EcommerceSolution.Application.Common;
 using EcommerceSolution.Data.Enums;
 using EcommerceSolution.Data.Model;
+using EcommerceSolution.Utilities.Cache;
 using EcommerceSolution.ViewModel.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -26,23 +27,14 @@ namespace EcommerceSolution.Application.Catalog.Categories
     public class CategoryService : ICategoryService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IBlobService _blobService;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private const string ContainerName = "images";
-        public CategoryService(IUnitOfWork unitOfWork, IBlobService blobService,
-            IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager)
+
+        public CategoryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _blobService = blobService;
-            _httpContextAccessor = httpContextAccessor;
-            _userManager = userManager;
         }
 
-        public async Task<CategoryViewModel> AddAsync(CategoryCreateRequest request)
+        public async Task<CategoryViewModel> AddAsync(CategoryCreateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             using var t = _unitOfWork.CreateTransaction();
             {
                 var cate = new CategoryModel()
@@ -50,8 +42,7 @@ namespace EcommerceSolution.Application.Catalog.Categories
                     Name = request.Name,
                 };
 
-
-                await _unitOfWork.Categories.AddAsync(cate, user.FirstName + " " + user.LastName);
+                await _unitOfWork.Categories.AddAsync(cate, userName);
                 await _unitOfWork.CompleteAsync();
                 t.Commit();
                 return new CategoryViewModel()
@@ -63,11 +54,9 @@ namespace EcommerceSolution.Application.Catalog.Categories
 
         }
 
-        public async Task<ApiResult<string>> DeleteAsync(Guid id)
+        public async Task<ApiResult<string>> DeleteAsync(Guid id, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
-            await _unitOfWork.Categories.DeleteAsync(id, user.FirstName + " " + user.LastName);
+            await _unitOfWork.Categories.DeleteAsync(id, userName);
             await _unitOfWork.CompleteAsync();
             return new ApiSuccessResult<string>("Updated category successful");
         }
@@ -158,16 +147,14 @@ namespace EcommerceSolution.Application.Catalog.Categories
             return new ApiSuccessResult<CategoryViewModel>(categoryViewModel);
         }
 
-        public async Task<ApiResult<string>> UpdateAsync(CategoryUpdateRequest request)
+        public async Task<ApiResult<string>> UpdateAsync(CategoryUpdateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
             using (var t = _unitOfWork.CreateTransactionScope(IsolationLevel.ReadCommitted))
             {
                 var cate = await _unitOfWork.Categories.GetByIdAsync(request.Id);
                 if (cate == null) throw new Exception($"Cannot find a category with id: {request.Id}");
                 cate.Name = request.Name;
-                await _unitOfWork.Categories.UpdateAsync(cate, user.FirstName + " " + user.LastName);
+                await _unitOfWork.Categories.UpdateAsync(cate, userName);
                 await _unitOfWork.CompleteAsync();
                 t.Complete();
                 return new ApiSuccessResult<string>("Updated category successful");

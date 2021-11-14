@@ -20,6 +20,9 @@ using EcommerceSolution.Application.Catolog.Orders;
 using EcommerceSolution.Application.Common;
 using EcommerceSolution.InterfaceRepository;
 using EcommerceSolution.Utilities.Cache;
+using EcommerceSolution.ViewModel.Validator;
+using EcommerceSolution.ViewModels.Catolog.Products;
+using FluentValidation;
 
 namespace EcommerceWeb.Extensions
 {
@@ -64,6 +67,13 @@ namespace EcommerceWeb.Extensions
                 .AddScoped<IProductImageService, ProductImageService>()
                 .AddScoped<IStorageService, StorageService>()
                 .AddScoped<IMemoryCacheHelper, MemoryCacheHelper>();
+        }
+
+        public static IServiceCollection AddValidator(this IServiceCollection services)
+        {
+            return services
+                .AddScoped<IValidator<ProductUpdateRequest>, ProductUpdateRequestValidator>()
+                .AddScoped<IValidator<ProductCreateRequest>, ProductCreateRequestValidator>();
         }
     }
 }

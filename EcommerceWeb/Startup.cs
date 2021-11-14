@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Azure.Storage.Blobs;
 using EcommerceSolution.Application.Common;
 using EcommerceWeb.Extensions;
+using FluentValidation.AspNetCore;
 using Serilog;
 namespace EcommerceWeb
 {
@@ -43,7 +44,10 @@ namespace EcommerceWeb
             services
                 .AddDatabase(Configuration)
                 .AddRepositories()
-                .AddServices();
+                .AddServices()
+                .AddValidator();
+
+            services.AddFluentValidation();
             // Initialising the BlobService, this will allow us to inject the blob 
             // client into our service
             var blobConnection = Configuration.GetValue<string>("AzureBlobStorage");

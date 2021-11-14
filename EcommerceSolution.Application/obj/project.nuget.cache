@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YXgjQEvkSov1jCRO7uquDsmk06tP4JYEYSpQmgvSCgvjDE5Rk8Ti/QONeH8FfC/DTQUN7AvatG5EG5kVfiJBLA==",
+  "dgSpecHash": "8GWpjsYoMnVJMK9niryQIbN5mot1fPtTYpkYgsD28gDaypuN4nsOXCjl/4/KCU/7wL6vtt4gfw2utK/yerauQw==",
   "success": true,
   "projectFilePath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Application\\EcommerceSolution.Application.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\PC\\.nuget\\packages\\azure.storage.blobs\\12.10.0\\azure.storage.blobs.12.10.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.storage.common\\12.9.0\\azure.storage.common.12.9.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.3\\fluentvalidation.aspnetcore.10.3.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.3\\fluentvalidation.dependencyinjectionextensions.10.3.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

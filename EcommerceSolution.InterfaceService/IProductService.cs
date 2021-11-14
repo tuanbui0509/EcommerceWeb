@@ -11,10 +11,10 @@ namespace EcommerceSolution.InterfaceService
 {
     public interface IProductService
     {
-        Task<ProductViewModel> CreateAsync(ProductCreateRequest request);
-        Task<ApiResult<string>> UpdateAsync(ProductUpdateRequest request);
+        Task<ProductViewModel> CreateAsync(ProductCreateRequest request, string userName);
+        Task<ApiResult<string>> UpdateAsync(ProductUpdateRequest request, string userName);
         Task<ProductViewModel> GetByIdAsync(Guid productId);
-        Task<ApiResult<string>> DeleteAsync(Guid productId);
+        Task<ApiResult<string>> DeleteAsync(Guid productId, string userName);
 
         Task<PagingResponse<ICollection<ProductViewModel>>> GetAllProductAsync(PagingRequestBase request);
 

@@ -16,6 +16,7 @@ using EcommerceSolution.ViewModels.Catolog.Products;
 using EcommerceSolution.ViewModels.Common;
 using EcommerceSolution.InterfaceService;
 using EcommerceSolution.InterfaceRepository.Interface;
+using EcommerceSolution.Utilities.Cache;
 using EcommerceSolution.ViewModel.Common;
 using Microsoft.Extensions.Logging;
 namespace EcommerceSolution.Application.Services.Catalog
@@ -24,19 +25,12 @@ namespace EcommerceSolution.Application.Services.Catalog
     {
         private readonly IBlobService _blobService;
         private readonly IUnitOfWork _unitOfWork;
-
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
         private readonly ILogger<ProductService> _logger;
         private const string ContainerName = "images";
-        public ProductService(IUnitOfWork unitOfWork, IBlobService blobService,
-            IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager)
+        public ProductService(IUnitOfWork unitOfWork, IBlobService blobService)
         {
             _unitOfWork = unitOfWork;
             _blobService = blobService;
-            _httpContextAccessor = httpContextAccessor;
-            _userManager = userManager;
         }
 
         public async Task AddViewCountAsync(Guid productId)
@@ -46,10 +40,9 @@ namespace EcommerceSolution.Application.Services.Catalog
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task<ProductViewModel> CreateAsync(ProductCreateRequest request)
+        public async Task<ProductViewModel> CreateAsync(ProductCreateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
+
             using (var t = _unitOfWork.CreateTransactionScope((IsolationLevel.ReadCommitted)))
             {
                 var productModel = new ProductModel
@@ -62,7 +55,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                     CategoryId = request.CategoryId,
                     IsFeatured = request.IsFeatured,
                 };
-                await _unitOfWork.Products.AddProductAsync(productModel, user.FirstName + " " + user.LastName);
+                await _unitOfWork.Products.AddProductAsync(productModel, userName);
                 //Save image
                 if (request.ThumbnailImage != null)
                 {
@@ -73,7 +66,7 @@ namespace EcommerceSolution.Application.Services.Catalog
                         ImagePath = fileName,
                         SortOrder = 1,
                     };
-                    await _unitOfWork.ProductImages.AddAsync(pImage, user.FirstName + " " + user.LastName);
+                    await _unitOfWork.ProductImages.AddAsync(pImage, userName);
                     productModel.ProductImages = new List<ProductImageModel>() { pImage };
                 }
 
@@ -153,25 +146,6 @@ namespace EcommerceSolution.Application.Services.Catalog
         }
 
 
-        public async Task<ApiResult<string>> UpdateAsync(ProductUpdateRequest request)
-        {
-            using (var t = _unitOfWork.CreateTransactionScope())
-            {
-                var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var user = await _userManager.FindByNameAsync(userName);
-                var productModel = await _unitOfWork.Products.GetByIdAsync(request.Id);
-                if (productModel == null) throw new Exception($"Cannot find a productModel with id: {request.Id}");
-                productModel.Name = request.Name;
-                productModel.Description = request.Description;
-                productModel.IsFeatured = request.IsFeatured;
-
-                await _unitOfWork.Products.UpdateProductAsync(productModel, user.FirstName + " " + user.LastName);
-                await _unitOfWork.CompleteAsync();
-                t.Complete();
-                return new ApiSuccessResult<string>("Update product successful");
-            }
-        }
-
 
 
 
@@ -248,13 +222,28 @@ namespace EcommerceSolution.Application.Services.Catalog
             }
         }
 
-
-
-        public async Task<ApiResult<string>> DeleteAsync(Guid productId)
+        public async Task<ApiResult<string>> UpdateAsync(ProductUpdateRequest request, string userName)
         {
-            var userName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _userManager.FindByNameAsync(userName);
-            await _unitOfWork.Products.DeleteProductAsync(productId, user.FirstName + " " + user.LastName);
+            using (var t = _unitOfWork.CreateTransactionScope())
+            {
+                var productModel = await _unitOfWork.Products.GetByIdAsync(request.Id);
+                if (productModel == null) throw new Exception($"Cannot find a productModel with id: {request.Id}");
+                productModel.Name = request.Name;
+                productModel.Description = request.Description;
+                productModel.IsFeatured = request.IsFeatured;
+
+                await _unitOfWork.Products.UpdateProductAsync(productModel, userName);
+                await _unitOfWork.CompleteAsync();
+                t.Complete();
+                return new ApiSuccessResult<string>("Update product successful");
+            }
+        }
+
+
+
+        public async Task<ApiResult<string>> DeleteAsync(Guid productId, string userName)
+        {
+            await _unitOfWork.Products.DeleteProductAsync(productId, userName);
             await _unitOfWork.CompleteAsync();
             return new ApiSuccessResult<string>("Deleted product successful");
         }

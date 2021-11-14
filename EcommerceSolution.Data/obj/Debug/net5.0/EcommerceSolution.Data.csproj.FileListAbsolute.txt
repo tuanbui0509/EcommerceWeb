@@ -34,7 +34,6 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\Ecom
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\ref\EcommerceSolution.Data.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.pdb
-E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.csproj.AssemblyReference.cache
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.GeneratedMSBuildEditorConfig.editorconfig
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.AssemblyInfoInputs.cache
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.AssemblyInfo.cs
@@ -43,3 +42,4 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\Ecom
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\ref\EcommerceSolution.Data.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.pdb
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.genruntimeconfig.cache
+E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.csproj.AssemblyReference.cache

@@ -20,7 +20,6 @@ namespace EcommerceSolution.Data.Entities
         public byte[] RowVersion { get; set; }
         public List<Order> Orders { get; set; }
         public List<Review> Reviews { get; set; }
-        public List<WishList> WishList { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }

@@ -25,7 +25,6 @@ namespace EcommerceSolution.Data.Entities
         public List<OrderDetail> OrderDetails { get; set; }
 
         public List<Review> Reviews { get; set; }
-        public List<WishList> WishList { get; set; }
         public List<ProductImage> ProductImages { get; set; }
     }
 }

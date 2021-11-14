@@ -69,7 +69,7 @@ namespace EcommerceSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "eb2b94d5-c50f-4f2b-bb1a-94048379cf54",
+                            ConcurrencyStamp = "f3d8b30f-5a6b-490d-8b0f-4f89eac28af6",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Administrator role",
                             IsDeleted = false,
@@ -79,7 +79,7 @@ namespace EcommerceSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("ce7e4c06-84b0-4114-912f-7e27f245dc47"),
-                            ConcurrencyStamp = "964f9f95-f47c-4a05-8f77-d017dc1e977e",
+                            ConcurrencyStamp = "45c32f5d-6d22-45f0-a6a2-2180d96ac7f5",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "User role",
                             IsDeleted = false,
@@ -183,7 +183,7 @@ namespace EcommerceSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "502ee21f-c5cb-4df3-acfe-c71f6f63ebed",
+                            ConcurrencyStamp = "1708eb7b-270c-490b-8f42-7c1631b474b7",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(2021, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "tuanbui0509@gmail.com",
@@ -194,7 +194,7 @@ namespace EcommerceSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "tuanbui0509@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFuYmpfVdKbdmBvuldydzu4LOuDvMgcrNZJNtLI7D8oqJ29zo0m86PYQJKL9Zp0Fvg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDOcL3lyeEvg/4Pwrh/Sc1uuk+hn6NwZIOAvYewUMWG5LPrF5S+JXXAV+1ISut5fBQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -204,7 +204,7 @@ namespace EcommerceSolution.Data.Migrations
                         {
                             Id = new Guid("aa16f18b-95b9-4e6a-837e-efb5b8e63e84"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5670ab8c-1459-4299-8608-36eb479f1b59",
+                            ConcurrencyStamp = "495b2670-dfd1-4635-a9ab-21c15b3c5ee6",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@gmail.com",
@@ -215,7 +215,7 @@ namespace EcommerceSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@gmail.com",
                             NormalizedUserName = "user",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM/5cFaYjmZVr/q9TaLALyruWlwxyZpet1j+R3RpwJgXdh2Kdlfv0lf2tevZdUQ+HA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBsYo4puoMOFoI9Uqf//BMLV9gb8thq12DvHMx+pe6Hf/EH0p2T0piwXn/RrangMbA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -473,8 +473,10 @@ namespace EcommerceSolution.Data.Migrations
 
             modelBuilder.Entity("EcommerceSolution.Data.Entities.Review", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Comment")
@@ -490,9 +492,6 @@ namespace EcommerceSolution.Data.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Rate")
                         .HasColumnType("int");
@@ -511,57 +510,11 @@ namespace EcommerceSolution.Data.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "ProductId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("EcommerceSolution.Data.Entities.WishList", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("WishList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -742,32 +695,11 @@ namespace EcommerceSolution.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("EcommerceSolution.Data.Entities.WishList", b =>
-                {
-                    b.HasOne("EcommerceSolution.Data.Entities.Product", "Product")
-                        .WithMany("WishList")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EcommerceSolution.Data.Entities.AppUser", "AppUser")
-                        .WithMany("WishList")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("EcommerceSolution.Data.Entities.AppUser", b =>
                 {
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("EcommerceSolution.Data.Entities.Category", b =>
@@ -787,8 +719,6 @@ namespace EcommerceSolution.Data.Migrations
                     b.Navigation("ProductImages");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("WishList");
                 });
 #pragma warning restore 612, 618
         }
