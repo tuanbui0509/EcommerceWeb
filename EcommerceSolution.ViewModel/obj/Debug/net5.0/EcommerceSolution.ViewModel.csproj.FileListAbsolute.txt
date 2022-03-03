@@ -43,3 +43,18 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\ref\EcommerceSolution.ViewModel.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\EcommerceSolution.ViewModel.deps.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\EcommerceSolution.ViewModel.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\ref\EcommerceSolution.ViewModel.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\EcommerceSolution.ViewModel.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\bin\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.csproj.AssemblyReference.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.AssemblyInfoInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.AssemblyInfo.cs
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.csproj.CoreCompileInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.csproj.CopyComplete
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\ref\EcommerceSolution.ViewModel.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.ViewModel\obj\Debug\net5.0\EcommerceSolution.ViewModel.pdb

@@ -32,3 +32,20 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\ref\EcommerceSolution.InterfaceRepository.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.deps.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\ref\EcommerceSolution.InterfaceRepository.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.ViewModel.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.ViewModel.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\bin\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.AssemblyReference.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.GeneratedMSBuildEditorConfig.editorconfig
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.AssemblyInfoInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.AssemblyInfo.cs
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.CoreCompileInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.csproj.CopyComplete
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\ref\EcommerceSolution.InterfaceRepository.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Business\obj\Debug\net5.0\EcommerceSolution.InterfaceRepository.pdb

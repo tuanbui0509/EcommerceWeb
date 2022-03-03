@@ -34,3 +34,15 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\ref\EcommerceSolution.Utilities.dll
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\bin\Debug\net5.0\EcommerceSolution.Utilities.deps.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\bin\Debug\net5.0\EcommerceSolution.Utilities.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\bin\Debug\net5.0\ref\EcommerceSolution.Utilities.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\bin\Debug\net5.0\EcommerceSolution.Utilities.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.csproj.AssemblyReference.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.AssemblyInfoInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.AssemblyInfo.cs
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.csproj.CoreCompileInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\ref\EcommerceSolution.Utilities.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Utilities\obj\Debug\net5.0\EcommerceSolution.Utilities.pdb

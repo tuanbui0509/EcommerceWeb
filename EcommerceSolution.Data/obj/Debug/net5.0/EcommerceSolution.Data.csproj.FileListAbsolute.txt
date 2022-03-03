@@ -43,3 +43,18 @@ E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\ref\
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.pdb
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.genruntimeconfig.cache
 E:\NashTech\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.csproj.AssemblyReference.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.deps.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.runtimeconfig.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.runtimeconfig.dev.json
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\ref\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\bin\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.csproj.AssemblyReference.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.AssemblyInfoInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.AssemblyInfo.cs
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.csproj.CoreCompileInputs.cache
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\ref\EcommerceSolution.Data.dll
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.pdb
+E:\NashTech\BACK END\ASP.NET_PROJECT\Project\EcommerceSolution.Data\obj\Debug\net5.0\EcommerceSolution.Data.genruntimeconfig.cache

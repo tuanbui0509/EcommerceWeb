@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj": {}
+    "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj": {}
   },
   "projects": {
-    "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj": {
+    "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj",
+        "projectUniqueName": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj",
         "projectName": "EcommerceSolution.InterfaceRepository",
-        "projectPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\obj\\",
+        "projectPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\EcommerceSolution.InterfaceRepository.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Business\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +31,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj": {
-                "projectPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj"
+              "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj": {
+                "projectPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj"
               }
             }
           }
@@ -96,21 +99,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj": {
+    "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj",
+        "projectUniqueName": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj",
         "projectName": "EcommerceSolution.Data",
-        "projectPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\obj\\",
+        "projectPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -240,21 +246,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj": {
+    "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj",
+        "projectUniqueName": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj",
         "projectName": "EcommerceSolution.ViewModel",
-        "projectPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\obj\\",
+        "projectPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\EcommerceSolution.ViewModel.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.ViewModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -268,8 +277,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj": {
-                "projectPath": "E:\\NashTech\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj"
+              "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj": {
+                "projectPath": "E:\\NashTech\\BACK END\\ASP.NET_PROJECT\\Project\\EcommerceSolution.Data\\EcommerceSolution.Data.csproj"
               }
             }
           }
@@ -344,7 +353,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
