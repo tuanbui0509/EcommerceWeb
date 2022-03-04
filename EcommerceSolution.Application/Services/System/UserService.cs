@@ -41,7 +41,7 @@ namespace EcommerceSolution.Application.Services.System
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null) return new ApiErrorResult<string>("Account not exits");
 
-            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, true,true);
             if (!result.Succeeded)
             {
                 return new ApiErrorResult<string>("Login error");
@@ -156,7 +156,7 @@ namespace EcommerceSolution.Application.Services.System
             {
                 return new ApiSuccessResult<bool>();
             }
-            return new ApiErrorResult<bool>("Register successful");
+            return new ApiErrorResult<bool>("Register Unsuccessful");
         }
 
 

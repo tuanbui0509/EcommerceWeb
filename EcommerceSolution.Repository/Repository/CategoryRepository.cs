@@ -29,7 +29,7 @@ namespace EcommerceSolution.Repository.Repository
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
-        public async Task AddAsync(CategoryModel categoryModel, string userName)
+        public async Task<Category> AddCategoryAsync(CategoryModel categoryModel, string userName)
         {
             var category = new Category()
             {
@@ -41,6 +41,7 @@ namespace EcommerceSolution.Repository.Repository
 
             };
             await _context.Set<Category>().AddAsync(category);
+            return category;
         }
 
         public async Task DeleteAsync(Guid id, string userName)

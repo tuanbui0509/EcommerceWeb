@@ -71,10 +71,10 @@ namespace EcommerceSolution.BackendApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCategoryAsync([FromForm] CategoryCreateRequest request)
         {
-            var cate = await _categoryService.AddAsync(request, CurrentUsername);
-            if (cate == null)
-                return BadRequest("Can not add category");
-            return Ok(cate);
+            var res = await _categoryService.AddAsync(request, CurrentUsername);
+            if (res.IsSuccessed)
+                return Ok(res);
+            return BadRequest("Can not add category");
 
         }
 

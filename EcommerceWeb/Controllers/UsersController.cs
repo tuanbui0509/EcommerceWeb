@@ -22,7 +22,7 @@ namespace EcommerceWeb.Controllers
         [HttpPost("Authenticate")]
         [AllowAnonymous]
 
-        public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
+        public async Task<IActionResult> AuthenticateAsync([FromBody] LoginRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -38,7 +38,7 @@ namespace EcommerceWeb.Controllers
 
         [HttpPost("Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        public async Task<IActionResult> RegisterUserAsync([FromBody] RegisterRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -52,7 +52,7 @@ namespace EcommerceWeb.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromForm] UserUpdateRequest request)
+        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

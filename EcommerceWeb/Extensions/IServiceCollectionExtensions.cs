@@ -23,6 +23,7 @@ using EcommerceSolution.Utilities.Cache;
 using EcommerceSolution.ViewModel.Validator;
 using EcommerceSolution.ViewModels.Catolog.Products;
 using FluentValidation;
+using EcommerceSolution.Application.System.Roles;
 
 namespace EcommerceWeb.Extensions
 {
@@ -61,6 +62,7 @@ namespace EcommerceWeb.Extensions
         {
             return services
                 .AddScoped<IUserService, UserService>()
+                .AddScoped<IRoleService, RoleService>()
                 .AddScoped<ICategoryService, CategoryService>()
                 .AddScoped<IProductService, ProductService>()
                 .AddScoped<IOrderService, OrderSevice>()

@@ -33,22 +33,28 @@ namespace EcommerceSolution.Application.Catalog.Categories
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CategoryViewModel> AddAsync(CategoryCreateRequest request, string userName)
+        public async Task<ApiResult<CategoryViewModel>> AddAsync(CategoryCreateRequest request, string userName)
         {
             using var t = _unitOfWork.CreateTransaction();
             {
-                var cate = new CategoryModel()
+                var cateModel = new CategoryModel()
                 {
                     Name = request.Name,
                 };
 
-                await _unitOfWork.Categories.AddAsync(cate, userName);
+                Category cate=  await _unitOfWork.Categories.AddCategoryAsync(cateModel, userName);
                 await _unitOfWork.CompleteAsync();
                 t.Commit();
-                return new CategoryViewModel()
+                var cateVM = new CategoryViewModel()
                 {
-                    Id = cate.Id,
-                    Name = cate.Name,
+                    Id=cate.Id,
+                    Name=cate.Name,
+                };
+                return new ApiSuccessResult<CategoryViewModel>()
+                {
+                    Message = "Create category successful",
+                    IsSuccessed = true,
+                    ResultObj = cateVM
                 };
             }
 
@@ -142,7 +148,6 @@ namespace EcommerceSolution.Application.Catalog.Categories
             {
                 Id = category.Id,
                 Name = category.Name,
-
             };
             return new ApiSuccessResult<CategoryViewModel>(categoryViewModel);
         }

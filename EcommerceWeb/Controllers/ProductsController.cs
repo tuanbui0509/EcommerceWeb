@@ -15,7 +15,7 @@ namespace EcommerceSolution.BackendApi.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class ProductsController : SuperController
     {
         private readonly IProductService _productService;
@@ -106,7 +106,6 @@ namespace EcommerceSolution.BackendApi.Controllers
         }
 
         [HttpDelete]
-
         public async Task<ActionResult> DeleteAsync([FromForm] Guid productId)
         {
             var product = await _productService.GetByIdAsync(productId);

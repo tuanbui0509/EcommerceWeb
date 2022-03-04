@@ -19,7 +19,7 @@ namespace EcommerceSolution.InterfaceService
         Task<PagingResponse<List<ProductViewModel>>> GetAllProductByIdAsync(Guid categoryId, PagingRequestBase request);
 
         Task<ApiResult<CategoryViewModel>> GetByIdAsync(Guid id);
-        Task<CategoryViewModel> AddAsync(CategoryCreateRequest request, string userName);
+        Task<ApiResult<CategoryViewModel>> AddAsync(CategoryCreateRequest request, string userName);
         Task<ApiResult<string>> UpdateAsync(CategoryUpdateRequest request, string userName);
 
         Task<ApiResult<string>> DeleteAsync(Guid id, string userName);

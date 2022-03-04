@@ -21,6 +21,13 @@ namespace EcommerceSolution.ViewModels.Common
             Roles = roles;
         }
 
+        public ApiSuccessResult(T resultObj, string message)
+        {
+            IsSuccessed = true;
+            ResultObj = resultObj;
+            Message = message;
+        }
+
         public ApiSuccessResult(T resultObj)
         {
             IsSuccessed = true;

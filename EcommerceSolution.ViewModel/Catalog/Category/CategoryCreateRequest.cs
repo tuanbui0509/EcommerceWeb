@@ -9,8 +9,6 @@ namespace EcommerceSolution.ViewModel.Catalog.Category
 {
     public class CategoryCreateRequest
     {
-        public int Status { set; get; }
         public string Name { get; set; }
-
     }
 }

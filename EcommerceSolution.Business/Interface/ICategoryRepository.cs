@@ -16,7 +16,7 @@ namespace EcommerceSolution.InterfaceRepository.Interface
 
         Task<CategoryModel> GetByIdAsync(Guid id);
         Task DeleteAsync(Guid id, string userName);
-        Task AddAsync(CategoryModel categoryModel, string userName);
+        Task<Category> AddCategoryAsync(CategoryModel categoryModel, string userName);
 
         Task UpdateAsync(CategoryModel categoryModel, string userName);
         Task<ICollection<ProductModel>> GetAllProductByIdAsync(Guid id);

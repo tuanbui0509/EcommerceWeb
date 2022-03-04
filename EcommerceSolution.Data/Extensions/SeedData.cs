@@ -20,7 +20,7 @@ namespace EcommerceSolution.Data.Extensions
             modelBuilder.Entity<AppRole>().HasData(new AppRole
             {
                 Id = roleId,
-                Name = "admin",
+                Name = "Admin",
                 NormalizedName = "admin",
                 Description = "Administrator role"
             });
@@ -34,7 +34,7 @@ namespace EcommerceSolution.Data.Extensions
                 Email = "tuanbui0509@gmail.com",
                 NormalizedEmail = "tuanbui0509@gmail.com",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "tuanbui0509"),
+                PasswordHash = hasher.HashPassword(null, "admin"),
                 SecurityStamp = string.Empty,
                 FirstName = "Tuan",
                 LastName = "Ngoc",
